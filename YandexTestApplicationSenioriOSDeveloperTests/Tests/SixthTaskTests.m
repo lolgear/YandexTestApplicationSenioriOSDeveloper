@@ -40,6 +40,47 @@ static NSString *kTestDataFilename = @"SixthTestsData";
     [super tearDown];
 }
 
+char mostFrequentCharacterStraight(const char*str, int size) {
+    if (size < 0) {
+        return '\0';
+    }
+    
+    if (size < 3) {
+        // special cases
+        if (size == 0) {
+            return '\0';
+        }
+        else
+        if (size == 1) {
+            return str[0];
+        }
+        else
+        if (size == 2) {
+            return str[1];
+        }
+    }
+    
+    
+    int allLettersCount = 256;
+    int *firstLetters = calloc(allLettersCount, sizeof(int));
+    
+    // compute characters frequency
+    int count = 0;
+    char character = '\0';
+    for (int i = 0; i < size; ++i) {
+        
+        int characterCount = ++firstLetters[ str[ i ] ];
+        
+        if (count < characterCount) {
+            count = characterCount;
+            character = i;
+        }
+        
+    }
+    
+    return character;
+}
+
 char mostFrequentCharacterFast(const char*str, int size) {
     
     if (size < 0) {
@@ -105,6 +146,44 @@ char mostFrequentCharacterFast(const char*str, int size) {
     }
     
     return character;
+}
+
+- (void) testFastVersionPerformance {
+    NSError *error = nil;
+    NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:kTestDataFilename ofType:@"txt"];
+    NSString *string = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    
+    if (error) {
+        NSLog(@"error: %@", error);
+        return;
+    }
+    
+    self.string = string;
+    const char *cString = [string cStringUsingEncoding:NSUTF8StringEncoding];
+    int size = (int)string.length;
+
+    [self measureBlock:^{
+        mostFrequentCharacterFast(cString, size);
+    }];
+}
+
+- (void) testSlowVersionPerformance {
+    NSError *error = nil;
+    NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:kTestDataFilename ofType:@"txt"];
+    NSString *string = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    
+    if (error) {
+        NSLog(@"error: %@", error);
+        return;
+    }
+    
+    self.string = string;
+    const char *cString = [string cStringUsingEncoding:NSUTF8StringEncoding];
+    int size = (int)string.length;
+
+    [self measureBlock:^{
+        mostFrequentCharacterStraight(cString, size);
+    }];
 }
 
 - (void) testSearchMostFrequentLetter {
