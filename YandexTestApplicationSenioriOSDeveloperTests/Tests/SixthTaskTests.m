@@ -116,18 +116,16 @@ char mostFrequentCharacterFast(const char*str, int size) {
     
     dispatch_group_async(group, firstQueue, ^{
         
-        for (int i = 0; i < size - halfSize; ++i) {
+        for (int i = 0; i < halfSize; ++i) {
             firstLetters[ str[i] ]++;
         }
         
     });
     
     dispatch_group_async(group, secondQueue, ^{
-        
-        for (int i = 0; i < halfSize + 1; ++i) {
-            secondLetters[ str[size - i] ]++;
+        for (int i = halfSize; i < size; ++i) {
+            secondLetters[ str[i] ]++;
         }
-        
     });
     
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
