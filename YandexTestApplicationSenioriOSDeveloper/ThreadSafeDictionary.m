@@ -64,12 +64,9 @@
     });
 }
 
+// for tests only
 - (NSString *)description {
     return [self.dictionary description];
-}
-
-- (NSArray *)allKeys {
-    return self.dictionary.allKeys;
 }
 
 @end

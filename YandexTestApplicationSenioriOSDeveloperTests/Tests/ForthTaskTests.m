@@ -10,7 +10,7 @@
 #import <XCTest/XCTest.h>
 #import <objc/runtime.h>
 
-@interface ForthTaskTests : XCTestCase <NSURLConnectionDownloadDelegate>
+@interface ForthTaskTests : XCTestCase
 
 @end
 
@@ -27,7 +27,6 @@
 }
 
 - (void)downloadImageFromURL:(NSURL *)URL intoCell:(UITableViewCell *)cell {
-    // create request
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue new] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (connectionError) {

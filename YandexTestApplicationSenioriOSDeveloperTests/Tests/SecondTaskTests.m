@@ -51,14 +51,6 @@
             completion(currentRevision);
         }];
     });
-//    for (id item in items) {
-//        dispatch_sync(queue, ^{
-//            [self processItem:item revision:currentRevision completion:^(NSInteger newRevision, id item) {
-//                currentRevision = newRevision;
-//                NSLog(@"current element: %@ with revision: %ld", item, (long)currentRevision);
-//            }];
-//        });
-//    }
 }
 
 
@@ -76,9 +68,9 @@
         oldRevision = newRevision;
     }
     
-    
     __block NSArray *revisions = @[];
     dispatch_queue_t queue = dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, DISPATCH_QUEUE_SERIAL);
+    
     dispatch_sync(queue, ^{
         [self processItems:array revision:revision completion:^(NSInteger newRevision) {
             // do something

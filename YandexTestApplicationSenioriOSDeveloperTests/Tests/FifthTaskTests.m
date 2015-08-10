@@ -32,8 +32,6 @@
     dispatch_queue_t firstQueue = dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t secondQueue = dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
-    dispatch_group_t group = dispatch_group_create();
-    
     dispatch_async(firstQueue, ^{
         for (int i = 1; i < 10; ++i) {
             [dictionary setObject:@(i + 100) forKey:@"c"];
@@ -50,19 +48,7 @@
         }
     });
 
-//    dispatch_group_notify(group, firstQueue, ^{
-//        NSLog(@"I've DONE IT!");
-//    });
-//    
-//    dispatch_group_notify(group, secondQueue, ^{
-//        NSLog(@"ME TOO!");
-//    });
-//    
-//    
-//    dispatch_group_wait(group, dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC));
-
     NSLog(@"dictionary is: %@", dictionary);
-    sleep(10);
-    //XCTAssert([dictionary count] == 1);
+    sleep(5);
 }
 @end

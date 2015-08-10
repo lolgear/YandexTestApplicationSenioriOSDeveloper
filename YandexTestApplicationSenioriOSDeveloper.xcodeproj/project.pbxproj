@@ -20,6 +20,7 @@
 		0454EC5C1B78E28500DA8F21 /* ForthTaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0454EC571B78E28500DA8F21 /* ForthTaskTests.m */; };
 		0454EC5D1B78E28500DA8F21 /* SecondTaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0454EC581B78E28500DA8F21 /* SecondTaskTests.m */; };
 		0454EC5E1B78E28500DA8F21 /* SixthTaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0454EC591B78E28500DA8F21 /* SixthTaskTests.m */; };
+		0454EC631B78E70F00DA8F21 /* SixthTestsData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0454EC621B78E70F00DA8F21 /* SixthTestsData.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		0454EC571B78E28500DA8F21 /* ForthTaskTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForthTaskTests.m; sourceTree = "<group>"; };
 		0454EC581B78E28500DA8F21 /* SecondTaskTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondTaskTests.m; sourceTree = "<group>"; };
 		0454EC591B78E28500DA8F21 /* SixthTaskTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SixthTaskTests.m; sourceTree = "<group>"; };
+		0454EC621B78E70F00DA8F21 /* SixthTestsData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SixthTestsData.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		0454EC441B78E21D00DA8F21 /* YandexTestApplicationSenioriOSDeveloperTests */ = {
 			isa = PBXGroup;
 			children = (
+				0454EC611B78E70F00DA8F21 /* TestsData */,
 				0454EC541B78E28500DA8F21 /* Tests */,
 				0454EC471B78E21D00DA8F21 /* YandexTestApplicationSenioriOSDeveloperTests.m */,
 				0454EC451B78E21D00DA8F21 /* Supporting Files */,
@@ -145,6 +148,14 @@
 				0454EC591B78E28500DA8F21 /* SixthTaskTests.m */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		0454EC611B78E70F00DA8F21 /* TestsData */ = {
+			isa = PBXGroup;
+			children = (
+				0454EC621B78E70F00DA8F21 /* SixthTestsData.txt */,
+			);
+			path = TestsData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0454EC631B78E70F00DA8F21 /* SixthTestsData.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +462,7 @@
 				0454EC4D1B78E21D00DA8F21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0454EC4E1B78E21D00DA8F21 /* Build configuration list for PBXNativeTarget "YandexTestApplicationSenioriOSDeveloperTests" */ = {
 			isa = XCConfigurationList;
@@ -458,6 +471,7 @@
 				0454EC501B78E21D00DA8F21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

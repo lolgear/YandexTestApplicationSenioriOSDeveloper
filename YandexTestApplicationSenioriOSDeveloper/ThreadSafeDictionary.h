@@ -14,5 +14,5 @@
 - (id)objectForKey:(id)aKey;
 - (void)removeAllObjects;
 - (void)setObject:(id)object forKey:(id)aKey;
-- (NSArray *)allKeys;
+
 @end
