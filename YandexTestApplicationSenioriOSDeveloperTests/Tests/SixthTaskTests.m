@@ -92,19 +92,19 @@ char mostFrequentCharacterFast(const char*str, int size) {
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     
     int count = 0;
-    char letter = '\0';
+    char character = '\0';
     for (int i = 0; i < allLettersCount; ++i) {
         
-        int letterCount = (firstLetters[i] + secondLetters[i]);
+        int characterCount = (firstLetters[i] + secondLetters[i]);
         
-        if (count < letterCount) {
-            count = letterCount;
-            letter = i;
+        if (count < characterCount) {
+            count = characterCount;
+            character = i;
         }
 
     }
     
-    return letter;
+    return character;
 }
 
 - (void) testSearchMostFrequentLetter {

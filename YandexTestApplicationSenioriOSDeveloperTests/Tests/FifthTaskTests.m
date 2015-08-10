@@ -26,6 +26,30 @@
     [super tearDown];
 }
 
+- (void)testConditionsThreadSafeDictionary {
+    ThreadSafeDictionary *dictionary = [ThreadSafeDictionary new];
+
+    // set nil for not existing
+    XCTAssertNoThrow([dictionary setObject:nil forKey:@"not existing"]);
+    
+    // set and delete
+    NSString *lightweightKey = @"lightweightKey";
+    [dictionary setObject:@"object" forKey:lightweightKey];
+    XCTAssertNoThrow([dictionary setObject:nil forKey:lightweightKey]);
+    XCTAssertNil([dictionary objectForKey:lightweightKey]);
+    
+    // nil as key
+    XCTAssertNil([dictionary objectForKey:nil]);
+    
+    // set key nil and object
+    XCTAssertNoThrow([dictionary setObject:@"object" forKey:nil]);
+    
+    // set key nil and object nil
+    XCTAssertNoThrow([dictionary setObject:nil forKey:nil]);
+    
+    //
+}
+
 - (void)testAggressiveThreadSafeDictionary {
     
     __block ThreadSafeDictionary *dictionary = [ThreadSafeDictionary new];

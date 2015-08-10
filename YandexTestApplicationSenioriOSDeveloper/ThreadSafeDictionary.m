@@ -28,6 +28,7 @@
     return self;
 }
 
+#pragma mark - Public Methods
 - (NSUInteger)count {
     // doesn't work if we add something to it
     __block NSUInteger localCount;
@@ -42,7 +43,10 @@
     __block id localObject = nil;
     
     dispatch_sync(_queue, ^{
-        localObject = self.dictionary[aKey];
+        if (aKey) {
+            localObject = self.dictionary[aKey];
+        }
+        // nil otherwise
     });
     
     return localObject;
@@ -59,12 +63,23 @@
     // we should block others
     dispatch_barrier_async(_queue, ^{
         NSMutableDictionary *mutableDictionary = [self.dictionary mutableCopy];
-        mutableDictionary[aKey] = object;
+
+        if (!aKey) {
+            return;
+        }
+        
+        if (object == nil) {
+            [mutableDictionary removeObjectForKey:aKey];
+        }
+        else {
+            mutableDictionary[aKey] = object;
+        }
+        
         self.dictionary = [mutableDictionary copy];
     });
 }
 
-// for tests only
+// for debug only
 - (NSString *)description {
     return [self.dictionary description];
 }
